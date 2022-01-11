@@ -30,6 +30,7 @@ namespace ProgrammingLanguageEnviroment
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.commandLine = new System.Windows.Forms.RichTextBox();
             this.ProgramWindow = new System.Windows.Forms.RichTextBox();
@@ -44,6 +45,9 @@ namespace ProgrammingLanguageEnviroment
             this.label1 = new System.Windows.Forms.Label();
             this.saveFD = new System.Windows.Forms.SaveFileDialog();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OutputWindow)).BeginInit();
             this.SuspendLayout();
@@ -100,6 +104,7 @@ namespace ProgrammingLanguageEnviroment
             this.menuStrip1.Size = new System.Drawing.Size(1809, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // File
             // 
@@ -115,21 +120,21 @@ namespace ProgrammingLanguageEnviroment
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // OutputWindow
@@ -158,6 +163,7 @@ namespace ProgrammingLanguageEnviroment
             // 
             // saveFD
             // 
+            this.saveFD.AutoUpgradeEnabled = false;
             this.saveFD.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // openFD
@@ -165,11 +171,33 @@ namespace ProgrammingLanguageEnviroment
             this.openFD.FileName = "openFD";
             this.openFD.FileOk += new System.ComponentModel.CancelEventHandler(this.openFD_FileOk);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 500;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(299, 727);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 49);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Flashing Color";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1809, 789);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.syntaxButton);
             this.Controls.Add(this.RunButton);
@@ -205,6 +233,9 @@ namespace ProgrammingLanguageEnviroment
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SaveFileDialog saveFD;
         private System.Windows.Forms.OpenFileDialog openFD;
+        public System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
