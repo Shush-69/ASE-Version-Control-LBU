@@ -1,0 +1,5 @@
+C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnviroment\ProgrammingTestEnvironment\obj\Debug\netcoreapp3.1\ProgrammingTestEnvironment.csproj.AssemblyReference.cache
+C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnviroment\ProgrammingTestEnvironment\obj\Debug\netcoreapp3.1\ProgrammingTestEnvironment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnviroment\ProgrammingTestEnvironment\obj\Debug\netcoreapp3.1\ProgrammingTestEnvironment.AssemblyInfoInputs.cache
+C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnviroment\ProgrammingTestEnvironment\obj\Debug\netcoreapp3.1\ProgrammingTestEnvironment.AssemblyInfo.cs
+C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnviroment\ProgrammingTestEnvironment\obj\Debug\netcoreapp3.1\ProgrammingTestEnvironment.csproj.CoreCompileInputs.cache

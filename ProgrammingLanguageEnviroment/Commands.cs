@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using Timer = System.Threading.Timer;
 
 namespace ProgrammingLanguageEnviroment
 {
@@ -12,6 +14,15 @@ namespace ProgrammingLanguageEnviroment
     {
         private Canvas CanvassInstance;
         private RichTextBox commandLine;
+        
+
+        void TickTimer(object state)
+        {
+
+            Console.WriteLine("Tick");
+            Thread.Sleep(2000);
+        }
+
 
         public Commands(Canvas CanvasInstance, RichTextBox CommandLine)
         {
@@ -52,10 +63,10 @@ namespace ProgrammingLanguageEnviroment
                 case "reset": ResetPenPosition();
                     break;
 
-                case "fillshape": FillShape(ParamList);
+                case "fill": FillShape(ParamList);
                     break;
 
-                case "flashingcolour": FlashingColor();
+                case "flash": FlashingColor(ParamList);
                     break;
 
                 // If none of the cases are met then show this error 
@@ -191,7 +202,7 @@ namespace ProgrammingLanguageEnviroment
         /// Check we have been given the x and y parameters
         /// </summary>
         /// <param name="ParamList"></param>
-        private void DrawCircle(string[] ParamList)
+        public void DrawCircle(string[] ParamList)
         {
             
             if (ParamList.Length == 1)
@@ -274,9 +285,34 @@ namespace ProgrammingLanguageEnviroment
             CanvassInstance.MoveTo(0, 0);
         }
 
-        private void FlashingColor()
+        private void FlashingColor(string[] ParamList)
         {
+            CanvassInstance.FillShape();
+            Timer TTimer = null;
 
+            if (ParamList.Length == 1)
+            {
+                string d = ParamList[0];
+              
+                
+                    switch (d)
+                    {
+                        case "redgreen":
+
+
+                           
+                            CanvassInstance.solidBrush.Color = Color.Green;
+                            TTimer = new Timer(new TimerCallback(TickTimer),
+                                null, 1000, 1000);
+                            CanvassInstance.solidBrush.Color = Color.Red;
+                            break;
+
+                        case "stop":
+                            TTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                            break;
+                    }
+
+            }
         }
 
         private void FillShape(string [] ParamList)
@@ -306,7 +342,7 @@ namespace ProgrammingLanguageEnviroment
             }
             else
             {
-                MessageBox.Show("Not enough parameters given for fill shape, please use format of fillshape, black");
+                MessageBox.Show("Not enough parameters given for fill shape, please use format of fillshape black");
                 commandLine.Text = "";
             }
 
