@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using Timer = System.Threading.Timer;
 
 namespace ProgrammingLanguageEnviroment
 {
@@ -12,6 +14,17 @@ namespace ProgrammingLanguageEnviroment
     {
         private Canvas CanvassInstance;
         private RichTextBox commandLine;
+        public bool flashingColor;
+        public Color secondColor;
+        public Color color;
+
+        void TickTimer(object state)
+        {
+
+            Console.WriteLine("Tick");
+            Thread.Sleep(2000);
+        }
+
 
         public Commands(Canvas CanvasInstance, RichTextBox CommandLine)
         {
@@ -52,10 +65,10 @@ namespace ProgrammingLanguageEnviroment
                 case "reset": ResetPenPosition();
                     break;
 
-                case "fillshape": FillShape(ParamList);
+                case "fill": FillShape(ParamList);
                     break;
 
-                case "flashingcolour": FlashingColor();
+                case "flash": FlashingColor(ParamList);
                     break;
 
                 // If none of the cases are met then show this error 
@@ -191,7 +204,7 @@ namespace ProgrammingLanguageEnviroment
         /// Check we have been given the x and y parameters
         /// </summary>
         /// <param name="ParamList"></param>
-        private void DrawCircle(string[] ParamList)
+        public void DrawCircle(string[] ParamList)
         {
             
             if (ParamList.Length == 1)
@@ -209,6 +222,8 @@ namespace ProgrammingLanguageEnviroment
                     return;
                 }
 
+                if (flashingColor)
+                    
 
 
                 CanvassInstance.DrawCircle(r);
@@ -269,14 +284,48 @@ namespace ProgrammingLanguageEnviroment
                 commandLine.Text = "";
             }
         }
+
+
         private void ResetPenPosition()
         {
             CanvassInstance.MoveTo(0, 0);
         }
 
-        private void FlashingColor()
-        {
 
+        public void setFlash(Color firstColor, Color secondColor)
+        {
+            flashingColor = true;
+            color = firstColor;
+            this.secondColor = secondColor;
+
+        }
+
+        private void FlashingColor(string[] ParamList)
+        {
+           
+
+
+            if (ParamList.Length == 1)
+            {
+                string d = ParamList[0];
+              
+                
+                    switch (d)
+                    {
+                        case "redgreen":
+                        setFlash(Color.Red, Color.Green);
+                            break;
+
+                        case "blueyellow":
+                        setFlash(Color.Blue, Color.Yellow);
+                            break;
+
+                        case "blackwhite":
+                        setFlash(Color.Black, Color.White);
+                            break;
+                    }
+
+            }
         }
 
         private void FillShape(string [] ParamList)
@@ -306,7 +355,7 @@ namespace ProgrammingLanguageEnviroment
             }
             else
             {
-                MessageBox.Show("Not enough parameters given for fill shape, please use format of fillshape, black");
+                MessageBox.Show("Not enough parameters given for fill shape, please use format of fillshape black");
                 commandLine.Text = "";
             }
 
