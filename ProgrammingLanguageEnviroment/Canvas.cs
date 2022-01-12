@@ -11,12 +11,21 @@ namespace ProgrammingLanguageEnviroment
     public class Canvas
     {
 
+        public System.Windows.Forms.PictureBox OutputWindow;
 
-        Graphics g;
+        public Graphics g;
+
+        public Commands commands;
 
         public Pen drawPen;
 
         public SolidBrush solidBrush;
+
+        public Color color, secondColor;
+
+        public bool fillState;
+
+        public bool flashing, cycle;
 
         public bool fill = false;
 
@@ -25,7 +34,10 @@ namespace ProgrammingLanguageEnviroment
         public int penSizeX = 0, penSizeY = 0;
         int canvasSizeX = 0, canvasSizeY = 0;
 
-
+        /// <summary>
+        /// initiating the canvass instance
+        /// </summary>
+        /// <param name="g"></param>
         public Canvas(Graphics g)
         {
             this.g = g;
@@ -33,7 +45,7 @@ namespace ProgrammingLanguageEnviroment
             drawPen = new Pen(Color.Black, 1);
 
 
-            solidBrush = new SolidBrush(Color.Black);
+            solidBrush = new SolidBrush(Color.Transparent);
            
 
             MoveTo(0, 0);
@@ -60,7 +72,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// Moves the pen's drawing location to specified co-ordinates
+        /// Drawing to the specified co-ordinates
         /// </summary>
         public void DrawTo(int targetX, int targetY)
         {
@@ -69,46 +81,110 @@ namespace ProgrammingLanguageEnviroment
             yPosition = targetY;
         }
 
-        public void DrawSquare(int width)//add command for this
+        /// <summary>
+        /// Drawing a square to the specified co-ordinates and size
+        /// </summary>
+        /// <param name="width"></param>
+        public void DrawSquare(int width)
         {
             g.DrawRectangle(drawPen, xPosition, yPosition, xPosition + width, yPosition + width);
             g.FillRectangle(solidBrush, xPosition, yPosition, xPosition + width, yPosition + width);
         }
+        /// <summary>
+        /// Drawing a rectangle to the specified co-ordinates and size
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public void DrawRectangle(int width, int height)
         {
             g.DrawRectangle(drawPen, xPosition, yPosition, xPosition + width, yPosition + height);
             g.FillRectangle(solidBrush, xPosition, yPosition, xPosition + width, yPosition + height);
-
-
         }
 
+        /// <summary>
+        /// Drawing a traingle to the specified co-ordinates and size 
+        /// </summary>
+        /// <param name="pointsToDraw"></param>
         public void DrawTriangle(PointF[] pointsToDraw)
         {
             g.DrawPolygon(drawPen, pointsToDraw);
             g.FillPolygon(solidBrush, pointsToDraw);
         }
 
+        /// <summary>
+        /// Drawing a circle to the specified co-ordinates and radius 
+        /// </summary>
+        /// <param name="radius"></param>
         public void DrawCircle(float radius)
         {
         g.DrawEllipse(drawPen, xPosition - radius, yPosition - radius, radius*2,radius*2);
         g.FillEllipse(solidBrush, xPosition - radius, yPosition - radius, radius * 2, radius * 2);
-
         }
 
+        /// <summary>
+        /// Clears the canvass to a clean page 
+        /// </summary>
         public void ClearDrawing()
         {
             g.Clear(Color.White);
         }
+
+        public void update()
+        {
+            OutputWindow.Refresh();
+        }
+
+        /// <summary>
+        /// Resets the Pen Poisiton to the original position
+        /// </summary>
         public void ResetPenPosition()
         {
             MoveTo(50, 50);
         }
 
+        /// <summary>
+        /// Fills the drawn shape with selected colour
+        /// </summary>
         public void FillShape()
         {
             fill = !fill;
         }
 
+        public void setFlash(Color secondColor)
+        {
+            this.secondColor = secondColor;
+            flashing = true;
+        }
+
+        public void flashRunner()
+        {
+            if (flashing)
+            {
+                if (cycle)
+                {
+                    drawPen.Color = secondColor;
+                    solidBrush.Dispose();
+                    solidBrush = new SolidBrush(secondColor);
+                    cycle = false;
+                }
+                else
+                {
+                    drawPen.Color = color;
+                    solidBrush.Dispose();
+                    solidBrush = new SolidBrush(color);
+                    cycle = true;
+                }
+            }
+        }
+
+       /* public void flash()
+        {
+            foreach (Graphics graphic in g ) { 
+                flashRunner();
+            }
+            update();
+        }*/
+     
 
 
     }
