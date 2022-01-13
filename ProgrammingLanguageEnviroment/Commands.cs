@@ -46,16 +46,25 @@ namespace ProgrammingLanguageEnviroment
                     CanvassInstance.ClearDrawing(); 
                     break;
 
+                case "redgreen":
+                    FlashingColorRG();
+                    break;
+
+                case "blueyellow":
+                    FlashingColorBY();
+                    break;
+
+                case "blackwhite":
+                    FlashingColorBW();
+                    break;
+
                 case "pencolour": ChangePenColour(ParamList);
                     break;
 
                 case "reset": ResetPenPosition();
                     break;
 
-                case "fillshape": FillShape(ParamList);
-                    break;
-
-                case "flashingcolour": FlashingColor();
+                case "fill": FillShape(ParamList);
                     break;
 
                 // If none of the cases are met then show this error 
@@ -274,9 +283,19 @@ namespace ProgrammingLanguageEnviroment
             CanvassInstance.MoveTo(0, 0);
         }
 
-        private void FlashingColor()
+        private void FlashingColorRG()
         {
+            CanvassInstance.flashingSetRG = true;
+        }
 
+        private void FlashingColorBY()
+        {
+            CanvassInstance.flashingSetBY = true;
+        }
+
+        private void FlashingColorBW()
+        {
+            CanvassInstance.flashingSetBW = true;
         }
 
         private void FillShape(string [] ParamList)

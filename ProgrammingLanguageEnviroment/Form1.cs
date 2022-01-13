@@ -24,7 +24,7 @@ namespace ProgrammingLanguageEnviroment
         public Form1()
         {
             InitializeComponent();
-            CanvasInstance = new Canvas(Graphics.FromImage(OutputBitmap)); //class for handling the drawing, pass the drawing surface to it
+            CanvasInstance = new Canvas(Graphics.FromImage(OutputBitmap), OutputWindow); //class for handling the drawing, pass the drawing surface to it
             commandInstance = new Commands(CanvasInstance, commandLine);
 
             CanvasInstance.SetElementsSizes(OutputBitmap.Width, OutputBitmap.Height, OutputWindow.Width, OutputWindow.Height);
