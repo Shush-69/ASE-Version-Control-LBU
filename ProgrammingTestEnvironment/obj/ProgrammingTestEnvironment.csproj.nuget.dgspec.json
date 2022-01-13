@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingTestEnvironment\\ProgrammingTestEnvironment.csproj": {}
+    "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingTestEnvironment\\ProgrammingTestEnvironment.csproj": {}
   },
   "projects": {
-    "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj": {
+    "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj",
+        "projectUniqueName": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj",
         "projectName": "ProgrammingLanguageEnviroment",
-        "projectPath": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj",
+        "projectPath": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}
@@ -19,14 +19,14 @@
         "net472": {}
       }
     },
-    "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingTestEnvironment\\ProgrammingTestEnvironment.csproj": {
+    "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingTestEnvironment\\ProgrammingTestEnvironment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingTestEnvironment\\ProgrammingTestEnvironment.csproj",
+        "projectUniqueName": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingTestEnvironment\\ProgrammingTestEnvironment.csproj",
         "projectName": "ProgrammingTestEnvironment",
-        "projectPath": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingTestEnvironment\\ProgrammingTestEnvironment.csproj",
+        "projectPath": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingTestEnvironment\\ProgrammingTestEnvironment.csproj",
         "packagesPath": "C:\\Users\\atyab\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingTestEnvironment\\obj\\",
+        "outputPath": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingTestEnvironment\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -48,8 +48,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj": {
-                "projectPath": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\naqi\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj"
+              "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj": {
+                "projectPath": "C:\\Users\\atyab\\OneDrive\\Documents\\advanced software\\ASE-Version-Control-LBU-main\\ProgrammingLanguageEnviroment\\ProgrammingLanguageEnviroment.csproj"
               }
             }
           }
