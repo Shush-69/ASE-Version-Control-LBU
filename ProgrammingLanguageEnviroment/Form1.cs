@@ -24,7 +24,7 @@ namespace ProgrammingLanguageEnviroment
         public Form1()
         {
             InitializeComponent();
-            CanvasInstance = new Canvas(Graphics.FromImage(OutputBitmap)); //class for handling the drawing, pass the drawing surface to it
+            CanvasInstance = new Canvas(Graphics.FromImage(OutputBitmap), OutputWindow); //class for handling the drawing, pass the drawing surface to it
             commandInstance = new Commands(CanvasInstance, commandLine);
 
             CanvasInstance.SetElementsSizes(OutputBitmap.Width, OutputBitmap.Height, OutputWindow.Width, OutputWindow.Height);
@@ -50,8 +50,7 @@ namespace ProgrammingLanguageEnviroment
         {
             //set up this as a process method where i pass the line of commands to the objects
 
-            string[] InputStringArray = commandLine.Text.Trim().ToLower().Split(' ');
-            String CommandString = InputStringArray[0];
+            string InputStringArray = commandLine.Text.Trim().ToLower();
             string[] ParamList = new string[0];
 
             // Check we have more than one string
@@ -61,12 +60,12 @@ namespace ProgrammingLanguageEnviroment
             {
                 if (InputStringArray.Length > 1)
                 {
-                    commandInstance.ProcessCommand(CommandString, InputStringArray[1]);  
+                    commandInstance.ProcessCommand(CanvasInstance, InputStringArray);  
                 }
 
                 else
                 {
-                    commandInstance.ProcessCommand(CommandString, InputStringArray[0]);
+                    commandInstance.ProcessCommand(CanvasInstance, InputStringArray);
                 }
 
                 commandLine.Text = "";//clears command line
@@ -89,32 +88,109 @@ namespace ProgrammingLanguageEnviroment
 
         private void RunButton_Click(object sender, EventArgs e)
         {
-            String[] ProgramCommand = ProgramWindow.Lines;
+            String ProgramCommands = ProgramWindow.Text.ToLower();
+            String[] Commander = ProgramCommands.Split(Environment.NewLine.ToCharArray());
+            int Loop = 0;
+            List<String> VariableNumber = new List<String>();
+            List<String> VariableName = new List<String>();
+            String IfOperator = "";
+            String IfVariable = "";
+            int IF = 0;
+            int IfNumber = 0;
+            List<String> IfArray = new List<String>();
+            int l = 0;
 
-            for (int x = 0; x < ProgramCommand.Length; x++)
+
+            while (Loop < Commander.Length)
             {
-                String CommandString = ProgramCommand[x];
+                String[] SingleCommands = Commander[Loop].Split(' ');
 
-                String[] Commander = CommandString.Split(null);
-
-                if (Commander.Length > 1)
+                if (SingleCommands[0] == "if")
                 {
-                    commandInstance.ProcessCommand(Commander[0], Commander[1]);
+                    IF = 1;
+                    IfVariable = SingleCommands[1];
+                    IfOperator = SingleCommands[2];
+                    IfNumber = Int32.Parse(SingleCommands[3]);
+                    Loop++;
+
+                }
+                else if (IF == 1 && SingleCommands[0] != "endif")
+                {
+                    IfArray.Add(Commander[Loop]);
+
+                    Loop++;
                 }
 
+                else if (SingleCommands[0] == "endif")
+                {
+
+
+                    while (IfVariable != VariableName[l])
+                    {
+                        l++;
+                    }
+                    System.Windows.Forms.MessageBox.Show(VariableName[l]);
+                    if (IfOperator == "==")
+                    {
+                        if (Int32.Parse(VariableNumber[l]) == IfNumber)
+                        {
+
+
+                            foreach (String item in IfArray)
+                            {
+                                commandInstance.ProcessCommand(CanvasInstance, item);
+
+                                Refresh();
+
+
+                            }
+                            IF = 0;
+
+                        }
+                    }
+                    Loop++;
+                }
+                else if (IF == 0 && (SingleCommands[0] == "redpen" || SingleCommands[0] == "bluepen" || SingleCommands[0] == "greenpen" || SingleCommands[0] == "square" || SingleCommands[0] == "rectangle" || SingleCommands[0] == "circle" || SingleCommands[0] == "triangle" || SingleCommands[0] == "moveto" || SingleCommands[0] == "drawto" || SingleCommands[0] == "fill" || SingleCommands[0] == "clear" || SingleCommands[0] == "reset"))
+                {
+                    commandInstance.ProcessCommand(CanvasInstance, Commander[Loop]);
+                    Loop++;
+
+                    Refresh();
+                }
+                else if (SingleCommands[1] == "=")
+                {
+                    VariableNumber.Add(SingleCommands[2]);
+                    VariableName.Add(SingleCommands[0]);
+
+
+
+                    Loop++;
+                }
+                else if (SingleCommands[1] == "+")
+                {
+                    int ifLoop = 0;
+                    while (VariableName[ifLoop] != SingleCommands[0])
+                    {
+                        ifLoop++;
+                    }
+                    int PreviousValue = Int32.Parse(VariableNumber[ifLoop]);
+                    int PlusValue = Int32.Parse(SingleCommands[2]);
+                    String NewValue = (PreviousValue + PlusValue).ToString();
+                    VariableNumber[ifLoop] = NewValue;
+
+                    Loop++;
+                }
                 else
                 {
-                    commandInstance.ProcessCommand(Commander[0], Commander[0]);
-                }
 
-                commandLine.Text = "";//clears command line
-                OutputWindow.Refresh();
-                
+                    System.Windows.Forms.MessageBox.Show("No command");
+                    // (String line in InputWindow.Lines)
+                }
 
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+            private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
