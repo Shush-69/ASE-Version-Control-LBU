@@ -28,3 +28,13 @@ C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnvi
 C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnviroment\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.csproj.CoreCompileInputs.cache
 C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnviroment\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.exe
 C:\Users\atyab\OneDrive\Documents\advanced software\naqi\ProgrammingLanguageEnviroment\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.pdb
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\bin\Debug\ProgrammingLanguageEnviroment.exe.config
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\bin\Debug\ProgrammingLanguageEnviroment.exe
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\bin\Debug\ProgrammingLanguageEnviroment.pdb
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.csproj.AssemblyReference.cache
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.Form1.resources
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.Properties.Resources.resources
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.csproj.GenerateResource.cache
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.csproj.CoreCompileInputs.cache
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.exe
+C:\Users\atyab\OneDrive\Documents\advanced software\ASE-Version-Control-LBU-main\ProgrammingLanguageEnviroment\obj\Debug\ProgrammingLanguageEnviroment.pdb

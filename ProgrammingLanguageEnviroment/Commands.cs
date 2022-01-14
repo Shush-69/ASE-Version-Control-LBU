@@ -13,30 +13,42 @@ namespace ProgrammingLanguageEnviroment
         private Canvas CanvassInstance;
         private RichTextBox commandLine;
 
+        /// <summary>
+        /// This method is where the canvas instance and the command line is initiated to take commands and draw on to the outputwindow
+        /// </summary>
+        /// <param name="CanvasInstance"></param>
+        /// <param name="CommandLine"></param>
         public Commands(Canvas CanvasInstance, RichTextBox CommandLine)
         {
             CanvassInstance = CanvasInstance;
             commandLine = CommandLine;
         }
 
-        public void ProcessCommand(String CommandString, String ParamLists)
+        /// <summary>
+        /// This method is where commands from the commandline are processed to go through exception handling
+        /// Also if the command matches an argument the relevant method is called
+        /// </summary>
+        /// <param name="CanvasInstance"></param>
+        /// <param name="Command"></param>
+        public void ProcessCommand(Canvas CanvasInstance, String Command)
         {
-            String[] ParamList = ParamLists.Split(','); 
-            switch (CommandString)
+                String[] CommandString = Command.Split(' ');
+            
+            switch (CommandString[0])
             {
-                case "drawto":DrawTo(ParamList);
+                case "drawto":DrawTo(CommandString);
                     break;
 
-                case "moveto": MoveTo(ParamList);
+                case "moveto": MoveTo(CommandString);
                     break;
 
                 case "square":CanvassInstance.DrawSquare(25);
                     break;
 
-                case "rect": DrawRect(ParamList);
+                case "rect": DrawRect(CommandString);
                     break;
 
-                case "circle":DrawCircle(ParamList);
+                case "circle":DrawCircle(CommandString);
                     break;
 
                 case "triangle": DrawTriangle();
@@ -46,16 +58,34 @@ namespace ProgrammingLanguageEnviroment
                     CanvassInstance.ClearDrawing(); 
                     break;
 
-                case "pencolour": ChangePenColour(ParamList);
+                case "redgreen":
+                    FlashingColorRG();
+                    break;
+
+                case "blueyellow":
+                    FlashingColorBY();
+                    break;
+
+                case "blackwhite":
+                    FlashingColorBW();
                     break;
 
                 case "reset": ResetPenPosition();
                     break;
 
-                case "fillshape": FillShape(ParamList);
+                case "fill": FillShape(CommandString);
                     break;
 
-                case "flashingcolour": FlashingColor();
+                case "blackpen":
+                    CanvassInstance.drawPen.Color = Color.Black;
+                    break;
+
+                case "bluepen":
+                    CanvassInstance.drawPen.Color = Color.Blue;
+                    break;
+
+                case "redpen":
+                    CanvassInstance.drawPen.Color = Color.Red;
                     break;
 
                 // If none of the cases are met then show this error 
@@ -63,7 +93,9 @@ namespace ProgrammingLanguageEnviroment
                     MessageBox.Show(CommandString + " is an invalid command. Please try again.");
                     break;
             }
+                
         }
+
         /// <summary>
         /// Check we have been given the x and y
         /// </summary>
@@ -71,28 +103,28 @@ namespace ProgrammingLanguageEnviroment
         private void DrawTo(string[] ParamList)
         {
            
-            if (ParamList.Length == 2)
+            if (ParamList.Length == 3)
             {
                 int x, y = 0;
 
                 try
                 {
-                    x = Int32.Parse(ParamList[0]);
+                    x = Int32.Parse(ParamList[1]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse the parameter " + ParamList[0] + " as an int.");
+                    MessageBox.Show("Unable to parse the parameter " + ParamList[1] + " as an int.");
                     commandLine.Text = "";
                     return;
                 }
 
                 try
                 {
-                    y = Int32.Parse(ParamList[1]);
+                    y = Int32.Parse(ParamList[2]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[1] + " as an int.");
+                    MessageBox.Show("Unable to parse parameter " + ParamList[2] + " as an int.");
                     commandLine.Text = "";
                     return;
                 }
@@ -105,35 +137,36 @@ namespace ProgrammingLanguageEnviroment
                 commandLine.Text = "";
             }
         }
+
         /// <summary>
-        ///  Check we have been given the x and y parameters
+        /// Check we have been given the x and y parameters
         /// </summary>
-        /// <param name="ParamList"></param>
-        private void MoveTo(string[] ParamList)
+        /// <param name="CommandString"></param>
+        private void MoveTo(string[] CommandString)
         {
             
-            if (ParamList.Length == 2)
+            if (CommandString.Length == 3)
             {
                 int x, y = 0;
 
                 try
                 {
-                    x = Int32.Parse(ParamList[0]);
+                    x = Int32.Parse(CommandString[1]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[0] + " as an int.");
+                    MessageBox.Show("Unable to parse parameter " + CommandString[1] + " as an int.");
                     commandLine.Text = "";
                     return;
                 }
 
                 try
                 {
-                    y = Int32.Parse(ParamList[1]);
+                    y = Int32.Parse(CommandString[2]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[1] + " as an int.");
+                    MessageBox.Show("Unable to parse parameter " + CommandString[2] + " as an int.");
                     commandLine.Text = "";
                     return;
                 }
@@ -153,28 +186,28 @@ namespace ProgrammingLanguageEnviroment
         private void DrawRect(string[] ParamList)
         {
             
-            if (ParamList.Length == 2)
+            if (ParamList.Length == 3)
             {
                 int x, y = 0;
 
                 try
                 {
-                    x = Int32.Parse(ParamList[0]);
+                    x = Int32.Parse(ParamList[1]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[0] + " as an int.");
+                    MessageBox.Show("Unable to parse parameter " + ParamList[1] + " as an int.");
                     commandLine.Text = "";
                     return;
                 }
 
                 try
                 {
-                    y = Int32.Parse(ParamList[1]);
+                    y = Int32.Parse(ParamList[2]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[1] + " as an int.");
+                    MessageBox.Show("Unable to parse parameter " + ParamList[2] + " as an int.");
                     commandLine.Text = "";
                     return;
                 }
@@ -194,17 +227,17 @@ namespace ProgrammingLanguageEnviroment
         private void DrawCircle(string[] ParamList)
         {
             
-            if (ParamList.Length == 1)
+            if (ParamList.Length == 2)
             {
                 int r = 0;
 
                 try
                 {
-                    r = Int32.Parse(ParamList[0]);
+                    r = Int32.Parse(ParamList[1]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[0] + " as an int.");
+                    MessageBox.Show("Unable to parse parameter " + ParamList[1] + " as an int.");
                     commandLine.Text = "";
                     return;
                 }
@@ -238,54 +271,50 @@ namespace ProgrammingLanguageEnviroment
 
             CanvassInstance.DrawTriangle(trianglePoints);
         }
+
         /// <summary>
-        /// Check we have been given the x and y parameters
+        /// This method is used to reset the pen position on the outputwindow 
         /// </summary>
-        /// <param name="ParamList"></param>
-        private void ChangePenColour(string[] ParamList)
-        {
-           
-            if (ParamList.Length == 1)
-            {
-                string c = ParamList[0];
-
-                switch (c)
-                {
-                    case "black": CanvassInstance.drawPen.Color = Color.Black;
-                        break;
-
-                    case "blue": CanvassInstance.drawPen.Color = Color.Blue;
-                        break;
-
-                    case "red": CanvassInstance.drawPen.Color = Color.Red;
-                        break;
-
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("Not enough parameters given for Circle, please use format of circle 100");
-                commandLine.Text = "";
-            }
-        }
         private void ResetPenPosition()
         {
             CanvassInstance.MoveTo(0, 0);
         }
 
-        private void FlashingColor()
+        /// <summary>
+        /// This method is called to set the flashingset as true to start flashing colors
+        /// </summary>
+        private void FlashingColorRG()
         {
-
+            CanvassInstance.flashingSetRG = true;
         }
 
+        /// <summary>
+        /// This method is called to set the flashingset as true to start flashing colors
+        /// </summary>
+        private void FlashingColorBY()
+        {
+            CanvassInstance.flashingSetBY = true;
+        }
+
+        /// <summary>
+        /// This method is called to set the flashingset as true to start flashing colors
+        /// </summary>
+        private void FlashingColorBW()
+        {
+            CanvassInstance.flashingSetBW = true;
+        }
+
+        /// <summary>
+        /// This method is used to fill shapes with the colors the user has defined 
+        /// </summary>
+        /// <param name="ParamList"></param>
         private void FillShape(string [] ParamList)
         {
             CanvassInstance.FillShape();
 
-            if (ParamList.Length == 1)
+            if (ParamList.Length == 2)
             {
-                string c = ParamList[0];
+                string c = ParamList[1];
 
                 switch (c)
                 {
