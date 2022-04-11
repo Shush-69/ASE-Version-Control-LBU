@@ -56,7 +56,7 @@ Other Commands
   
   Save and load features are added in the strip menu item where you can successfully load and save files
   (Note the save and load features techincally do work however the image cannot be loaded back to the screen due
-  to issues with the file format chosen to save and load in)
+  to issues with the file format chosen to save and load in, Please go to form1.cs to find the code)
   
   *THE BELOW WAS PASTED FROM THE MARK SHEET OF THE MODULE*
   
